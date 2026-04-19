@@ -341,3 +341,27 @@
 {"clerkConfigured":true,"level":"info","message":"Environment validation passed","nodeEnv":"development","timestamp":"2026-04-19T20:16:44.067Z"}
 {"level":"info","message":"Server running on port 5000","timestamp":"2026-04-19T20:16:44.076Z"}
 {"level":"error","message":"User with this Clerk ID not found","stack":"AppError: User with this Clerk ID not found\n    at shareResource (/home/jiya/Desktop/DBMSminiProject/secure_cloud_system/backend/src/modules/permissions/permission.controller.ts:31:11)","timestamp":"2026-04-19T20:19:53.980Z"}
+{"clerkConfigured":true,"level":"info","message":"Environment validation passed","nodeEnv":"development","timestamp":"2026-04-19T20:34:45.339Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2026-04-19T20:34:45.347Z"}
+{"clerkConfigured":true,"level":"info","message":"Environment validation passed","nodeEnv":"development","timestamp":"2026-04-19T20:39:27.368Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2026-04-19T20:39:27.377Z"}
+{"clerkConfigured":true,"level":"info","message":"Environment validation passed","nodeEnv":"development","timestamp":"2026-04-19T20:44:02.046Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2026-04-19T20:44:02.056Z"}
+{"clerkConfigured":true,"level":"info","message":"Environment validation passed","nodeEnv":"development","timestamp":"2026-04-19T20:44:41.153Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2026-04-19T20:44:41.162Z"}
+{"clerkConfigured":true,"level":"info","message":"Environment validation passed","nodeEnv":"development","timestamp":"2026-04-19T20:46:34.644Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2026-04-19T20:46:34.653Z"}
+{"clerkConfigured":true,"level":"info","message":"Environment validation passed","nodeEnv":"development","timestamp":"2026-04-19T21:03:58.298Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2026-04-19T21:03:58.306Z"}
+{"clerkConfigured":true,"level":"info","message":"Environment validation passed","nodeEnv":"development","timestamp":"2026-04-19T21:06:58.297Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2026-04-19T21:06:58.309Z"}
+{"clerkConfigured":true,"level":"info","message":"Environment validation passed","nodeEnv":"development","timestamp":"2026-04-19T21:08:07.820Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2026-04-19T21:08:07.828Z"}
+{"clerkConfigured":true,"level":"info","message":"Environment validation passed","nodeEnv":"development","timestamp":"2026-04-19T21:09:18.518Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2026-04-19T21:09:18.527Z"}
+{"level":"error","message":"Cannot share resource with yourself","stack":"AppError: Cannot share resource with yourself\n    at shareResource (/home/jiya/Desktop/DBMSminiProject/secure_cloud_system/backend/src/modules/permissions/permission.controller.ts:36:11)","timestamp":"2026-04-19T21:16:51.531Z"}
+{"level":"error","message":"Access denied","stack":"AppError: Access denied\n    at getFolder (/home/jiya/Desktop/DBMSminiProject/secure_cloud_system/backend/src/modules/folders/folder.controller.ts:123:25)","timestamp":"2026-04-19T21:18:40.475Z"}
+{"level":"error","message":"Access denied","stack":"AppError: Access denied\n    at getFiles (/home/jiya/Desktop/DBMSminiProject/secure_cloud_system/backend/src/modules/files/file.controller.ts:82:27)","timestamp":"2026-04-19T21:18:40.489Z"}
+{"level":"error","message":"Access denied","stack":"AppError: Access denied\n    at getFolders (/home/jiya/Desktop/DBMSminiProject/secure_cloud_system/backend/src/modules/folders/folder.controller.ts:52:27)","timestamp":"2026-04-19T21:18:40.491Z"}
+{"clerkConfigured":true,"level":"info","message":"Environment validation passed","nodeEnv":"development","timestamp":"2026-04-19T21:21:50.558Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2026-04-19T21:21:50.567Z"}
