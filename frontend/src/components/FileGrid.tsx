@@ -1,4 +1,19 @@
 import React, { useState } from 'react';
+import AuditLogsModal from './AuditLogsModal';
+import { fileService, folderService } from '../services/fileService';
+
+interface AuditLog {
+  id: string;
+  action: string;
+  resourceId: string;
+  resourceType: string;
+  status: string;
+  createdAt: string;
+  actor: {
+    clerkUserId: string;
+  };
+  metadata?: string;
+}
 
 interface Props {
   folders: any[];
@@ -28,6 +43,12 @@ function getIcon(mimeType: string) {
 
 export default function FileGrid({ folders, files, onFolderClick, onDelete, onDownload, onShare }: Props) {
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number; item: any; type: 'file' | 'folder' } | null>(null);
+  const [auditLogsModal, setAuditLogsModal] = useState<{ isOpen: boolean; logs: AuditLog[]; resourceName: string; isLoading: boolean }>({
+    isOpen: false,
+    logs: [],
+    resourceName: '',
+    isLoading: false,
+  });
 
   const handleRightClick = (e: React.MouseEvent, item: any, type: 'file' | 'folder') => {
     e.preventDefault();
@@ -35,6 +56,22 @@ export default function FileGrid({ folders, files, onFolderClick, onDelete, onDo
   };
 
   const close = () => setContextMenu(null);
+
+  const handleViewAuditLogs = async (item: any, type: 'file' | 'folder') => {
+    try {
+      setAuditLogsModal((prev) => ({ ...prev, isOpen: true, isLoading: true, resourceName: item.name }));
+      
+      const logs = type === 'file' 
+        ? await fileService.getFileAuditLogs(item.id)
+        : await folderService.getFolderAuditLogs(item.id);
+      
+      setAuditLogsModal((prev) => ({ ...prev, logs: logs || [], isLoading: false }));
+    } catch (error) {
+      console.error('Failed to fetch audit logs:', error);
+      setAuditLogsModal((prev) => ({ ...prev, logs: [], isLoading: false }));
+    }
+    close();
+  };
 
   const fmtSize = (b: number) => {
     if (b >= 1e6) return `${(b / 1e6).toFixed(1)} MB`;
@@ -102,10 +139,20 @@ export default function FileGrid({ folders, files, onFolderClick, onDelete, onDo
             <button onClick={() => { onDownload(contextMenu.item.id, contextMenu.item.name); close(); }} style={menuBtn}>⬇ Download</button>
           )}
           <button onClick={() => { onShare(contextMenu.item); close(); }} style={menuBtn}>🔗 Share</button>
+          <button onClick={() => { handleViewAuditLogs(contextMenu.item, contextMenu.type); }} style={menuBtn}>📋 Audit Logs</button>
           <div style={{ height: 1, background: '#334155', margin: '4px 0' }} />
           <button onClick={() => { onDelete(contextMenu.type, contextMenu.item.id); close(); }} style={{ ...menuBtn, color: '#ef4444' }}>🗑 Delete</button>
         </div>
       )}
+
+      {/* Audit Logs Modal */}
+      <AuditLogsModal 
+        isOpen={auditLogsModal.isOpen}
+        onClose={() => setAuditLogsModal((prev) => ({ ...prev, isOpen: false }))}
+        logs={auditLogsModal.logs}
+        resourceName={auditLogsModal.resourceName}
+        isLoading={auditLogsModal.isLoading}
+      />
     </div>
   );
 }

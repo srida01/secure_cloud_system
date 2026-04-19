@@ -30,6 +30,11 @@ export const fileService = {
     return res.data.data;
   },
 
+  async getFileAuditLogs(id: string) {
+    const res = await api.get(`/files/${id}/audit-logs`);
+    return res.data.data;
+  },
+
   async searchFiles(query: string) {
     const res = await api.get('/search', {
       params: { q: query },
@@ -53,5 +58,10 @@ export const folderService = {
 
   async deleteFolder(id: string) {
     await api.delete(`/folders/${id}`);
+  },
+
+  async getFolderAuditLogs(id: string) {
+    const res = await api.get(`/folders/${id}/audit-logs`);
+    return res.data.data;
   },
 };

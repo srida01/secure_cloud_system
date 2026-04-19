@@ -77,3 +77,63 @@ export const deleteFolder = async (req: AuthRequest, res: Response) => {
   await createAuditLog(req.userId!, 'delete', folder.id, 'folder', { name: folder.name });
   res.json({ success: true, message: 'Folder deleted' });
 };
+
+export const getFolderAuditLogs = async (req: AuthRequest, res: Response) => {
+  const folder = await prisma.folder.findUnique({ where: { id: req.params.id } });
+  if (!folder || folder.isDeleted) throw new AppError(404, 'Folder not found');
+  
+  if (folder.ownerId !== req.userId) {
+    const perm = await prisma.permission.findFirst({
+      where: { resourceId: folder.id, granteeUserId: req.userId, isActive: true },
+    });
+    if (!perm) throw new AppError(403, 'Access denied');
+  }
+
+  // Get all audit logs for the folder
+  const folderLogs = await prisma.auditLog.findMany({
+    where: { resourceId: folder.id, resourceType: 'folder' },
+    include: { actor: { select: { clerkUserId: true } } },
+    orderBy: { createdAt: 'desc' },
+  });
+
+  // Get all files in this folder (recursively)
+  const getAllFiles = async (folderId: string): Promise<string[]> => {
+    const files = await prisma.file.findMany({
+      where: { folderId, isDeleted: false },
+      select: { id: true },
+    });
+    
+    const fileIds = files.map(f => f.id);
+    
+    const childFolders = await prisma.folder.findMany({
+      where: { parentFolderId: folderId, isDeleted: false },
+      select: { id: true },
+    });
+    
+    for (const child of childFolders) {
+      const childFileIds = await getAllFiles(child.id);
+      fileIds.push(...childFileIds);
+    }
+    
+    return fileIds;
+  };
+
+  const allFileIds = await getAllFiles(folder.id);
+
+  // Get audit logs for all files in this folder hierarchy
+  const fileLogs = await prisma.auditLog.findMany({
+    where: {
+      resourceId: { in: allFileIds },
+      resourceType: 'file',
+    },
+    include: { actor: { select: { clerkUserId: true } } },
+    orderBy: { createdAt: 'desc' },
+  });
+
+  // Combine and sort all logs
+  const allLogs = [...folderLogs, ...fileLogs].sort((a, b) => 
+    new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
+
+  res.json({ success: true, data: allLogs });
+};
