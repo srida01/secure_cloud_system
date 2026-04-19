@@ -1,0 +1,152 @@
+================================================================================
+  
+  CS253 Design and Analysis of Algorithms | Practical Assignment
+  Bhavana Alappat (241CS216) | Jiya Jayaprakash (241CS230)
+================================================================================
+
+
+FILES
+--------------------------------------------------------------------------------
+  sorting_algorithms.py     - Main sorting program (menu-driven)
+  generate_graphs.py        - Graph generator (reads results.csv)
+  results.csv               - Generated after running batch experiment
+  graphs/                   - Folder created after running generate_graphs.py
+
+
+REQUIREMENTS
+--------------------------------------------------------------------------------
+  - Python 3.x
+  - matplotlib library
+
+  Install matplotlib (only needed once):
+
+      pip install matplotlib
+
+
+--------------------------------------------------------------------------------
+  STEP 1 — GENERATE results.csv
+--------------------------------------------------------------------------------
+
+  1. Open a terminal and navigate to the folder containing the files.
+
+  2. Run the sorting program:
+
+         python3 sorting_algorithms.py
+
+  3. The main menu will appear:
+
+         ╔══════════════════════════════════════════════╗
+         ║       SORTING ALGORITHM COMPARISON TOOL      ║
+         ╠══════════════════════════════════════════════╣
+         ║  1. Run a single sort                        ║
+         ║  2. Run batch experiment (all → CSV)         ║
+         ║  3. Exit                                     ║
+         ╚══════════════════════════════════════════════╝
+
+  4. Enter 2 to run the batch experiment:
+
+         Enter choice: 2
+
+  5. Enter the number of repetitions (10 was used for the report):
+
+         How many times to repeat (for averaging)? [default=1]: 10
+
+  6. The program will run all algorithms on all input types and print
+     progress as it goes. When complete, results.csv will be saved
+     in the same folder.
+
+  NOTE: Quick Sort (Pivot: First) on Ascending and Descending input is
+  automatically capped at n=1000. This is expected — beyond that size
+  it degrades to O(n^2) and would take too long to run.
+
+
+--------------------------------------------------------------------------------
+  STEP 2 — GENERATE GRAPHS
+--------------------------------------------------------------------------------
+
+  1. Make sure results.csv is in the same folder as generate_graphs.py.
+
+  2. Run the graph generator:
+
+         python3 generate_graphs.py
+
+  3. All 9 graphs will be saved as PNG files inside a graphs/ folder:
+
+         graphs/graph1_qs_best_case.png
+         graphs/graph2_qs_worst_case.png
+         graphs/graph3_qs_avg_case.png
+         graphs/graph4_all_best_case.png
+         graphs/graph5_all_worst_case.png
+         graphs/graph6_all_avg_case.png
+         graphs/graph7_comparisons_vs_n.png
+         graphs/graph8_time_vs_n.png
+         graphs/graph9_correlation_per_algorithm.png
+
+
+--------------------------------------------------------------------------------
+  OPTIONAL — RUN A SINGLE SORT
+--------------------------------------------------------------------------------
+
+  1. Run sorting_algorithms.py and choose option 1 from the menu.
+
+  2. Select the input type:
+       1 - Random
+       2 - Ascending (sorted)
+       3 - Descending (reverse sorted)
+       4 - Read from file
+
+  3. Select the algorithm:
+       1 - Selection Sort
+       2 - Bubble Sort
+       3 - Insertion Sort
+       4 - Merge Sort
+       5 - Quick Sort (Pivot: First)
+       6 - Quick Sort (Pivot: Random)
+       7 - Quick Sort (Pivot: Median)
+       8 - Heap Sort
+       9 - Radix Sort
+       A - Run ALL algorithms
+
+  4. Enter number of repetitions for averaging.
+
+  5. The result will be printed:
+       Algorithm   : <name>
+       Input size  : <n>
+       Comparisons : <count>
+       Time        : <microseconds> (<seconds>)
+
+
+  FILE INPUT FORMAT (for option 4)
+  ---------------------------------
+  The file must be a plain text file formatted as follows:
+  - First line: total number of elements (n)
+  - Each subsequent line: one integer
+
+  Example (5 elements):
+
+      5
+      42
+      7
+      19
+      3
+      88
+
+
+================================================================================
+  ALGORITHMS INCLUDED
+================================================================================
+
+  Algorithm                  Complexity (Avg)    Notes
+  -------------------------  ------------------  ------------------------------
+  Selection Sort             O(n^2)              Tested up to n=5,000
+  Bubble Sort                O(n^2)              Tested up to n=5,000
+  Insertion Sort             O(n^2)              Tested up to n=5,000
+  Merge Sort                 O(n log n)          Tested up to n=100,000
+  Quick Sort (Pivot: First)  O(n log n) avg      Sorted input capped at n=1,000
+  Quick Sort (Pivot: Random) O(n log n)          Tested up to n=100,000
+  Quick Sort (Pivot: Median) O(n log n)          Tested up to n=100,000
+  Heap Sort                  O(n log n)          Tested up to n=100,000
+  Radix Sort                 O(nk)               No comparisons; n=100,000
+
+
+================================================================================

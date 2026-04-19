@@ -1,0 +1,174 @@
+Algorithm,Input Type,n,Avg Time (us),Avg Comparisons
+Selection Sort,Random,100,405.50,4950
+Selection Sort,Random,500,8711.60,124750
+Selection Sort,Random,1000,27469.93,499500
+Selection Sort,Random,2000,122475.16,1999000
+Selection Sort,Random,5000,741584.40,12497500
+Selection Sort,Ascending,100,199.23,4950
+Selection Sort,Ascending,500,6409.48,124750
+Selection Sort,Ascending,1000,25443.31,499500
+Selection Sort,Ascending,2000,101918.57,1999000
+Selection Sort,Ascending,5000,680989.96,12497500
+Selection Sort,Descending,100,226.71,4950
+Selection Sort,Descending,500,6781.13,124750
+Selection Sort,Descending,1000,26830.65,499500
+Selection Sort,Descending,2000,120018.32,1999000
+Selection Sort,Descending,5000,699842.76,12497500
+Bubble Sort,Random,100,417.20,4950
+Bubble Sort,Random,500,11320.35,124750
+Bubble Sort,Random,1000,53131.52,499500
+Bubble Sort,Random,2000,234482.33,1999000
+Bubble Sort,Random,5000,1329368.30,12497500
+Bubble Sort,Ascending,100,246.87,4950
+Bubble Sort,Ascending,500,6791.86,124750
+Bubble Sort,Ascending,1000,29559.37,499500
+Bubble Sort,Ascending,2000,133884.66,1999000
+Bubble Sort,Ascending,5000,814711.57,12497500
+Bubble Sort,Descending,100,446.90,4950
+Bubble Sort,Descending,500,12509.66,124750
+Bubble Sort,Descending,1000,55922.95,499500
+Bubble Sort,Descending,2000,240057.38,1999000
+Bubble Sort,Descending,5000,1570900.43,12497500
+Insertion Sort,Random,100,187.19,2615
+Insertion Sort,Random,500,5108.38,62951
+Insertion Sort,Random,1000,21723.10,251658
+Insertion Sort,Random,2000,97541.28,1002029
+Insertion Sort,Random,5000,565700.16,6241081
+Insertion Sort,Ascending,100,7.46,99
+Insertion Sort,Ascending,500,47.79,499
+Insertion Sort,Ascending,1000,98.19,999
+Insertion Sort,Ascending,2000,211.92,1999
+Insertion Sort,Ascending,5000,539.89,4999
+Insertion Sort,Descending,100,625.39,4950
+Insertion Sort,Descending,500,12685.12,124750
+Insertion Sort,Descending,1000,40403.72,499500
+Insertion Sort,Descending,2000,176798.94,1999000
+Insertion Sort,Descending,5000,1169878.33,12497500
+Merge Sort,Random,100,153.47,542
+Merge Sort,Random,500,1008.46,3849
+Merge Sort,Random,1000,2729.94,8702
+Merge Sort,Random,5000,12789.60,55244
+Merge Sort,Random,10000,26495.47,120483
+Merge Sort,Random,50000,178174.65,718147
+Merge Sort,Random,100000,459246.54,1536443
+Merge Sort,Ascending,100,123.00,316
+Merge Sort,Ascending,500,1181.54,2216
+Merge Sort,Ascending,1000,3602.77,4932
+Merge Sort,Ascending,5000,14064.71,29804
+Merge Sort,Ascending,10000,16990.15,64608
+Merge Sort,Ascending,50000,94026.25,382512
+Merge Sort,Ascending,100000,196271.64,815024
+Merge Sort,Descending,100,107.24,356
+Merge Sort,Descending,500,628.08,2272
+Merge Sort,Descending,1000,1525.24,5044
+Merge Sort,Descending,5000,7974.22,32004
+Merge Sort,Descending,10000,17463.81,69008
+Merge Sort,Descending,50000,94719.47,401952
+Merge Sort,Descending,100000,192514.38,853904
+Quick Sort (Pivot: First),Random,100,75.09,641
+Quick Sort (Pivot: First),Random,500,509.14,4571
+Quick Sort (Pivot: First),Random,1000,1397.13,10931
+Quick Sort (Pivot: First),Random,5000,8722.31,71854
+Quick Sort (Pivot: First),Random,10000,17092.04,159456
+Quick Sort (Pivot: First),Random,50000,111425.68,940356
+Quick Sort (Pivot: First),Random,100000,306271.66,2003142
+Quick Sort (Pivot: First),Ascending,100,394.92,4950
+Quick Sort (Pivot: First),Ascending,500,6211.30,124750
+Quick Sort (Pivot: First),Ascending,1000,25022.69,499500
+Quick Sort (Pivot: First),Descending,100,322.20,4950
+Quick Sort (Pivot: First),Descending,500,14048.94,124750
+Quick Sort (Pivot: First),Descending,1000,39723.33,499500
+Quick Sort (Pivot: Random),Random,100,115.59,618
+Quick Sort (Pivot: Random),Random,500,828.38,4687
+Quick Sort (Pivot: Random),Random,1000,1891.80,10993
+Quick Sort (Pivot: Random),Random,5000,10935.10,70908
+Quick Sort (Pivot: Random),Random,10000,23545.36,154070
+Quick Sort (Pivot: Random),Random,50000,155656.02,939669
+Quick Sort (Pivot: Random),Random,100000,445146.79,2011256
+Quick Sort (Pivot: Random),Ascending,100,181.74,680
+Quick Sort (Pivot: Random),Ascending,500,911.38,4753
+Quick Sort (Pivot: Random),Ascending,1000,1801.96,10868
+Quick Sort (Pivot: Random),Ascending,5000,10455.51,71396
+Quick Sort (Pivot: Random),Ascending,10000,22073.96,157898
+Quick Sort (Pivot: Random),Ascending,50000,125292.07,943869
+Quick Sort (Pivot: Random),Ascending,100000,264644.16,2019910
+Quick Sort (Pivot: Random),Descending,100,117.95,658
+Quick Sort (Pivot: Random),Descending,500,875.51,4729
+Quick Sort (Pivot: Random),Descending,1000,2112.17,11088
+Quick Sort (Pivot: Random),Descending,5000,11403.80,68628
+Quick Sort (Pivot: Random),Descending,10000,22388.62,158135
+Quick Sort (Pivot: Random),Descending,50000,124361.69,941075
+Quick Sort (Pivot: Random),Descending,100000,262904.05,1996088
+Quick Sort (Pivot: Median),Random,100,89.97,718
+Quick Sort (Pivot: Median),Random,500,688.51,4953
+Quick Sort (Pivot: Median),Random,1000,1417.79,11037
+Quick Sort (Pivot: Median),Random,5000,9006.11,68011
+Quick Sort (Pivot: Median),Random,10000,19537.66,151626
+Quick Sort (Pivot: Median),Random,50000,124147.92,878667
+Quick Sort (Pivot: Median),Random,100000,363226.14,1887884
+Quick Sort (Pivot: Median),Ascending,100,117.90,669
+Quick Sort (Pivot: Median),Ascending,500,598.60,4263
+Quick Sort (Pivot: Median),Ascending,1000,1115.45,9520
+Quick Sort (Pivot: Median),Ascending,5000,7377.76,60678
+Quick Sort (Pivot: Median),Ascending,10000,15296.05,131343
+Quick Sort (Pivot: Median),Ascending,50000,90707.78,782782
+Quick Sort (Pivot: Median),Ascending,100000,198411.17,1665551
+Quick Sort (Pivot: Median),Descending,100,155.08,804
+Quick Sort (Pivot: Median),Descending,500,776.38,6538
+Quick Sort (Pivot: Median),Descending,1000,2665.61,15394
+Quick Sort (Pivot: Median),Descending,5000,14148.55,105606
+Quick Sort (Pivot: Median),Descending,10000,27992.39,236088
+Quick Sort (Pivot: Median),Descending,50000,164583.59,1468547
+Quick Sort (Pivot: Median),Descending,100000,334960.23,3186625
+Heap Sort,Random,100,153.08,1029
+Heap Sort,Random,500,1213.15,7423
+Heap Sort,Random,1000,2682.71,16855
+Heap Sort,Random,5000,16660.86,107657
+Heap Sort,Random,10000,36378.31,235376
+Heap Sort,Random,50000,251513.64,1409883
+Heap Sort,Random,100000,724920.48,3019620
+Heap Sort,Ascending,100,218.20,1081
+Heap Sort,Ascending,500,1318.95,7756
+Heap Sort,Ascending,1000,2946.67,17583
+Heap Sort,Ascending,5000,17269.48,112126
+Heap Sort,Ascending,10000,38002.73,244460
+Heap Sort,Ascending,50000,260711.19,1455438
+Heap Sort,Ascending,100000,509420.23,3112517
+Heap Sort,Descending,100,128.71,944
+Heap Sort,Descending,500,1217.57,7010
+Heap Sort,Descending,1000,2550.09,15965
+Heap Sort,Descending,5000,25876.88,103227
+Heap Sort,Descending,10000,34093.23,226682
+Heap Sort,Descending,50000,248468.65,1366047
+Heap Sort,Descending,100000,470023.49,2926640
+Radix Sort,Random,100,83.45,0
+Radix Sort,Random,500,408.64,0
+Radix Sort,Random,1000,1557.18,0
+Radix Sort,Random,5000,7345.41,0
+Radix Sort,Random,10000,10744.56,0
+Radix Sort,Random,50000,125474.33,0
+Radix Sort,Random,100000,429047.98,0
+Radix Sort,Ascending,100,142.84,0
+Radix Sort,Ascending,500,885.29,0
+Radix Sort,Ascending,1000,2348.43,0
+Radix Sort,Ascending,5000,7880.92,0
+Radix Sort,Ascending,10000,15413.53,0
+Radix Sort,Ascending,50000,53483.43,0
+Radix Sort,Ascending,100000,128275.66,0
+Radix Sort,Descending,100,48.24,0
+Radix Sort,Descending,500,258.41,0
+Radix Sort,Descending,1000,716.52,0
+Radix Sort,Descending,5000,4162.91,0
+Radix Sort,Descending,10000,9948.73,0
+Radix Sort,Descending,50000,51667.13,0
+Radix Sort,Descending,100000,135103.07,0
+Quick Sort (Pivot: First),Ascending,2000,,
+Quick Sort (Pivot: First),Ascending,5000,,
+Quick Sort (Pivot: First),Ascending,10000,,
+Quick Sort (Pivot: First),Ascending,50000,,
+Quick Sort (Pivot: First),Ascending,100000,,
+Quick Sort (Pivot: First),Descending,2000,,
+Quick Sort (Pivot: First),Descending,5000,,
+Quick Sort (Pivot: First),Descending,10000,,
+Quick Sort (Pivot: First),Descending,50000,,
+Quick Sort (Pivot: First),Descending,100000,,
