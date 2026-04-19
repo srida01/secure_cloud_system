@@ -1,0 +1,192 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model User {
+  id          String    @id @default(uuid())
+  clerkUserId String    @unique @map("clerk_user_id") @db.VarChar(255)
+  role        UserRole  @default(viewer)
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  lastLoginAt DateTime? @map("last_login_at")
+
+  sessions      Session[]
+  storageQuota  StorageQuota?
+  ownedFolders  Folder[]      @relation("FolderOwner")
+  ownedFiles    File[]        @relation("FileOwner")
+  fileVersions  FileVersion[] @relation("VersionCreator")
+  grantedPerms  Permission[]  @relation("PermissionGranter")
+  receivedPerms Permission[]  @relation("PermissionReceiver")
+  auditLogs     AuditLog[]
+
+  @@map("users")
+}
+
+enum UserRole {
+  admin
+  editor
+  viewer
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  tokenHash String   @unique @map("token_hash") @db.VarChar(512)
+  ipAddress String?  @map("ip_address") @db.VarChar(45)
+  userAgent String?  @map("user_agent") @db.Text
+  expiresAt DateTime @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model StorageQuota {
+  id         String   @id @default(uuid())
+  userId     String   @unique @map("user_id")
+  quotaBytes BigInt   @default(10737418240) @map("quota_bytes") // 10GB
+  usedBytes  BigInt   @default(0) @map("used_bytes")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("storage_quotas")
+}
+
+model Folder {
+  id             String   @id @default(uuid())
+  ownerId        String   @map("owner_id")
+  parentFolderId String?  @map("parent_folder_id")
+  name           String   @db.VarChar(255)
+  path           String   @db.Text
+  depth          Int      @default(0)
+  isDeleted      Boolean  @default(false) @map("is_deleted")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  owner        User     @relation("FolderOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+  parentFolder Folder?  @relation("FolderChildren", fields: [parentFolderId], references: [id], onDelete: Cascade)
+  children     Folder[] @relation("FolderChildren")
+  files        File[]
+
+  @@map("folders")
+}
+
+model File {
+  id             String   @id @default(uuid())
+  ownerId        String   @map("owner_id")
+  folderId       String   @map("folder_id")
+  name           String   @db.VarChar(255)
+  originalName   String   @map("original_name") @db.VarChar(255)
+  mimeType       String?  @map("mime_type") @db.VarChar(127)
+  sizeBytes      BigInt   @map("size_bytes")
+  storageKey     String   @unique @map("storage_key") @db.VarChar(255)
+  checksumSha256 String?  @map("checksum_sha256") @db.Char(64)
+  isDeleted      Boolean  @default(false) @map("is_deleted")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  owner    User          @relation("FileOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+  folder   Folder        @relation(fields: [folderId], references: [id], onDelete: Cascade)
+  versions FileVersion[]
+  tags     Tag[]
+
+  @@map("files")
+}
+
+model FileVersion {
+  id             String   @id @default(uuid())
+  fileId         String   @map("file_id")
+  createdBy      String   @map("created_by")
+  versionNumber  Int      @map("version_number")
+  storageKey     String   @unique @map("storage_key") @db.VarChar(255)
+  sizeBytes      BigInt   @map("size_bytes")
+  checksumSha256 String?  @map("checksum_sha256") @db.Char(64)
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  file    File @relation(fields: [fileId], references: [id], onDelete: Cascade)
+  creator User @relation("VersionCreator", fields: [createdBy], references: [id], onDelete: Cascade)
+
+  @@map("file_versions")
+}
+
+model Tag {
+  id     String  @id @default(uuid())
+  fileId String  @map("file_id")
+  key    String  @db.VarChar(100)
+  name   String  @db.VarChar(100)
+  value  String? @db.VarChar(255)
+
+  file File @relation(fields: [fileId], references: [id], onDelete: Cascade)
+
+  @@map("tags")
+}
+
+model Permission {
+  id              String          @id @default(uuid())
+  grantedBy       String          @map("granted_by")
+  granteeUserId   String          @map("grantee_user_id")
+  resourceId      String          @map("resource_id")
+  resourceType    ResourceType    @map("resource_type")
+  permissionLevel PermissionLevel @map("permission_level")
+  expiresAt       DateTime?       @map("expires_at")
+  isActive        Boolean         @default(true) @map("is_active")
+  createdAt       DateTime        @default(now()) @map("created_at")
+  updatedAt       DateTime        @updatedAt @map("updated_at")
+
+  granter User @relation("PermissionGranter", fields: [grantedBy], references: [id], onDelete: Cascade)
+  grantee User @relation("PermissionReceiver", fields: [granteeUserId], references: [id], onDelete: Cascade)
+
+  @@map("permissions")
+}
+
+enum ResourceType {
+  file
+  folder
+}
+
+enum PermissionLevel {
+  view
+  edit
+  delete
+  owner
+}
+
+model AuditLog {
+  id           String      @id @default(uuid())
+  actorId      String      @map("actor_id")
+  resourceId   String?     @map("resource_id")
+  resourceType String?     @map("resource_type") @db.VarChar(50)
+  action       AuditAction
+  ipAddress    String?     @map("ip_address") @db.VarChar(45)
+  metadata     Json?
+  status       AuditStatus @default(success)
+  createdAt    DateTime    @default(now()) @map("created_at")
+
+  actor User @relation(fields: [actorId], references: [id], onDelete: Cascade)
+
+  @@map("audit_logs")
+}
+
+enum AuditAction {
+  upload
+  download
+  delete
+  view
+  edit
+  share
+  login
+  logout
+  denied
+}
+
+enum AuditStatus {
+  success
+  failure
+  denied
+}
