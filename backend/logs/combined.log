@@ -506,3 +506,21 @@
 {"level":"info","message":"Server running on port 5000","timestamp":"2026-04-20T05:22:24.859Z"}
 {"clerkConfigured":true,"level":"info","message":"Environment validation passed","nodeEnv":"development","timestamp":"2026-04-20T05:23:01.897Z"}
 {"level":"info","message":"Server running on port 5000","timestamp":"2026-04-20T05:23:01.906Z"}
+{"clerkConfigured":true,"level":"info","message":"Environment validation passed","nodeEnv":"development","timestamp":"2026-04-20T05:48:21.897Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2026-04-20T05:48:21.906Z"}
+{"level":"error","message":"File not found on disk","stack":"AppError: File not found on disk\n    at previewFile (/home/jiya/Desktop/DBMSminiProject/secure_cloud_system/backend/src/modules/files/file.controller.ts:149:41)","timestamp":"2026-04-20T05:48:40.141Z"}
+{"level":"error","message":"File not found on disk","stack":"AppError: File not found on disk\n    at previewFile (/home/jiya/Desktop/DBMSminiProject/secure_cloud_system/backend/src/modules/files/file.controller.ts:149:41)","timestamp":"2026-04-20T05:48:40.157Z"}
+{"level":"error","message":"File not found on disk","stack":"AppError: File not found on disk\n    at previewFile (/home/jiya/Desktop/DBMSminiProject/secure_cloud_system/backend/src/modules/files/file.controller.ts:149:41)","timestamp":"2026-04-20T05:48:45.061Z"}
+{"level":"error","message":"File not found on disk","stack":"AppError: File not found on disk\n    at previewFile (/home/jiya/Desktop/DBMSminiProject/secure_cloud_system/backend/src/modules/files/file.controller.ts:149:41)","timestamp":"2026-04-20T05:48:45.095Z"}
+{"clerkConfigured":true,"level":"info","message":"Environment validation passed","nodeEnv":"development","timestamp":"2026-04-20T05:57:35.064Z"}
+{"clerkConfigured":true,"level":"info","message":"Environment validation passed","nodeEnv":"development","timestamp":"2026-04-20T05:58:39.254Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2026-04-20T05:58:39.262Z"}
+{"clerkConfigured":true,"level":"info","message":"Environment validation passed","nodeEnv":"development","timestamp":"2026-04-20T05:59:03.344Z"}
+{"clerkConfigured":true,"level":"info","message":"Environment validation passed","nodeEnv":"development","timestamp":"2026-04-20T06:00:30.746Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2026-04-20T06:00:30.754Z"}
+{"level":"error","message":"File not found on disk","stack":"AppError: File not found on disk\n    at previewFile (/home/jiya/Desktop/DBMSminiProject/secure_cloud_system/backend/src/modules/files/file.controller.ts:149:41)","timestamp":"2026-04-20T06:00:48.051Z"}
+{"level":"error","message":"File not found on disk","stack":"AppError: File not found on disk\n    at previewFile (/home/jiya/Desktop/DBMSminiProject/secure_cloud_system/backend/src/modules/files/file.controller.ts:149:41)","timestamp":"2026-04-20T06:00:48.065Z"}
+{"clerkConfigured":true,"level":"info","message":"Environment validation passed","nodeEnv":"development","timestamp":"2026-04-20T06:05:30.048Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2026-04-20T06:05:30.057Z"}
+{"clerkConfigured":true,"level":"info","message":"Environment validation passed","nodeEnv":"development","timestamp":"2026-04-20T06:10:04.665Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2026-04-20T06:10:04.674Z"}
